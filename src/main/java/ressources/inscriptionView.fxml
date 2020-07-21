@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField layoutX="417.0" layoutY="95.0" />
+      <TextField layoutX="417.0" layoutY="197.0" />
+      <TextField layoutX="417.0" layoutY="153.0" />
+      <Button layoutX="305.0" layoutY="370.0" mnemonicParsing="false" text="Submit" />
+      <Label layoutX="153.0" layoutY="99.0" text="Firstname" />
+      <Label layoutX="153.0" layoutY="201.0" text="Email" />
+      <Label layoutX="153.0" layoutY="306.0" text="birthday" />
+      <Label layoutX="153.0" layoutY="251.0" prefHeight="17.0" prefWidth="80.0" text="password" />
+      <Label layoutX="153.0" layoutY="157.0" text="Lasname" />
+      <Label layoutX="304.0" layoutY="46.0" text="Inscription" />
+      <DatePicker layoutX="417.0" layoutY="302.0" prefHeight="25.0" prefWidth="149.0" />
+      <PasswordField layoutX="417.0" layoutY="256.0" />
+   </children>
+</AnchorPane>
