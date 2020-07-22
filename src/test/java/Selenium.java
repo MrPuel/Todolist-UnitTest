@@ -6,10 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.concurrent.TimeUnit;
 
-import static com.thoughtworks.selenium.SeleneseTestBase.fail;
+import static org.junit.Assert.fail;
+
 
 public class Selenium {
     private WebDriver driver;
@@ -19,6 +21,7 @@ public class Selenium {
 
     @Before
     public void setUp() throws Exception {
+        System.setProperty("webdriver.gecko.driver","C:/Users/Hervé/Downloads/geckodriver-v0.26.0-win64/geckodriver.exe");
         // On instancie notre driver, et on configure notre temps d'attente
         driver = new FirefoxDriver();
         baseUrl = "http://localhost/TU/";
@@ -26,26 +29,41 @@ public class Selenium {
     }
 
     @Test
-    public void testSelenium() throws Exception {
+    public void testSeleniumCreate() throws Exception {
         // On se connecte au site
         driver.get(baseUrl + "index.php/");
 
         // On se rend page 1
-        driver.findElement(By.id("contentForm:pageText")).clear();
-        driver.findElement(By.id("contentForm:pageTexz")).sendKeys("2");
-        driver.findElement(By.id("contentForm:nextPage")).click();
+        driver.findElement(By.id("inserer")).clear();
+        driver.findElement(By.id("inserer")).sendKeys("tache 1");
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        driver.findElement(By.id("envoyer")).click();
 
-        // On est page 2, on va page 3
-        driver.findElement(By.id("contentForm:page3Button")).click();
 
-        // On sélectionne notre prochaine page dans la liste
-        new Select(driver.findElement(By.id("contentForm:pageList_input"))).selectByVisibleText("1");
-        driver.findElement(By.id("contentForm:nextPageButton")).click();
+    }
 
-        // On est de retour page 1, on passe en anglais
-        driver.findElement(By.id("headerForm:english_button")).click();
+    @Test
+    public void testSeleniumValidateAndDelete() throws Exception {
+        // On se connecte au site
+        driver.get(baseUrl + "index.php/");
 
-        // Et on recommence le même enchainement
+        // On se rend page 1
+        driver.findElement(By.id("validate")).click();
+        driver.findElement(By.id("suppr")).click();
+
+    }
+
+    @Test
+    public void testSeleniumDeleteWithoutValidate() throws Exception {
+        // On se connecte au site
+        driver.get(baseUrl + "index.php/");
+
+        // On se rend page 1
+        driver.findElement(By.id("inserer")).clear();
+        driver.findElement(By.id("inserer")).sendKeys("tache 1");
+        driver.findElement(By.id("envoyer")).click();
+        driver.findElement(By.id("suppr")).click();
+
     }
 
     @After
